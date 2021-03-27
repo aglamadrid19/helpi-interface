@@ -211,6 +211,7 @@ export default function WalletModal({
   // get wallets user can switch too, depending on device/browser
   function getOptions() {
     const isCEW = window.celo && window.celo
+    const isMMK = window.web3 && window.web3
     return Object.keys(SUPPORTED_WALLETS).map(key => {
       const option = SUPPORTED_WALLETS[key]
       // check for mobile options
@@ -238,7 +239,7 @@ export default function WalletModal({
       // overwrite injected when needed
       if (option.connector === injected) {
         // don't show injected if there's no injected provider
-        if (!window.celo) {
+        if (!isMMK && !isCEW) {
           if (option.name === 'Celo Extension Wallet') {
             return (
               <Option
@@ -258,13 +259,13 @@ export default function WalletModal({
           }
         }
         // don't return metamask if injected provider isn't metamask
-        else if (option.name === 'Celo Extension Wallet' && !isCEW) {
-          return null
-        }
-        // likewise for generic
-        else if (option.name === 'Injected' && isCEW) {
-          return null
-        }
+        // else if (option.name === 'Celo Extension Wallet' && !isCEW) {
+        //   return null
+        // }
+        // // likewise for generic
+        // else if (option.name === 'Injected' && isCEW) {
+        //   return null
+        // }
       }
 
       // return rest of options

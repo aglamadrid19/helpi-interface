@@ -60,7 +60,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
   //   description: 'Injected web3 provider.',
   //   href: null,
   //   color: '#010101',
-  //   primary: true
+  //   // primary: true
   // },
   CELO_EXTENSION_WALLET: {
     connector: injected,
@@ -69,6 +69,14 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     description: 'Easy-to-use browser extension.',
     href: null,
     color: '#35D07F'
+  },
+  METAMASK_EXTENSION_WALLET: {
+    connector: injected,
+    name: 'MetaMask Extension Wallet',
+    iconName: 'metamask_logo.png',
+    description: 'Easy-to-use Ethereum compatible browser extension',
+    href: null,
+    color: "#35D07F"
   },
   LEDGER: {
     connector: ledger,
